@@ -7,7 +7,7 @@ const Stack = createStackNavigator();
 const Router = () => {
   return (
     <Stack.Navigator screenOptions={{
-     headerMode:"none"
+     headerMode:"false"
     }} initialRouteName='Introduce'>
       <Stack.Screen name='Introduce' component={Introduce} />
       <Stack.Screen name='Login' component={Login} />
