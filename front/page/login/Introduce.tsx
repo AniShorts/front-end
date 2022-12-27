@@ -1,25 +1,31 @@
 import React from 'react'
-import { Text, View, StyleSheet, Button } from 'react-native'
+import { View, StyleSheet, Button, Text } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 import Video from 'react-native-video'
 
-const Introduce = ({navigation}:any) => {
+const Introduce = ({ navigation }: any) => {
   return (
     <SafeAreaView style={styles.sort}>
-     
-      <View style={styles.button}>
+      <Logo />
+      <View style={styles.kakaoButton}>
         <Button
-          title='로그인'
-          onPress={() => navigation.navigate("Login")}
+          title='카카오 로그인하기'
         />
       </View>
-      <View  style={styles.button}>
-         <Button
-          color={'white'}
-          title='회원가입'
-          onPress={() => navigation.navigate("Signup")}
-        />
+      <View style={{ flexDirection: 'row' }}>
+        <View style={styles.button}>
+          <Button
+            title='로그인'
+            onPress={() => navigation.navigate("Login")}
+          />
+        </View>
+        <View style={styles.button}>
+          <Button
+            title='회원가입'
+            onPress={() => navigation.navigate("Signup")}
+          />
+        </View>
       </View>
     </SafeAreaView>
   )
@@ -31,12 +37,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#FFE3ED'
   },
-  button: {
-    backgroundColor: '#BEEBE9',
-    width: 280,
+  kakaoButton: {
+    backgroundColor: 'yellow',
+    width: 240,
     borderRadius: 15,
     marginBottom: 10,
-    borderColor: 'white',
+    borderWidth: 1,
+  },
+  button: {
+    backgroundColor: '#BEEBE9',
+    width: 140,
+    borderRadius: 15,
+    marginBottom: 10,
     borderWidth: 1,
   }
 });
