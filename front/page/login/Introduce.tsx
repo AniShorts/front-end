@@ -20,6 +20,12 @@ const Introduce = ({ navigation }: any) => {
             onPress={() => navigation.navigate("Login")}
           />
         </View>
+        <Nbt>
+        <Button
+            title='로그인'
+            onPress={() => navigation.navigate("Login")}
+          />
+        </Nbt>
         <View style={styles.button}>
           <Button
             title='회원가입'
@@ -52,6 +58,14 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   }
 });
+
+const Nbt = styled.View`
+  background-color: '#red';
+  width: 120px;
+  border-radius: 12;
+  margin-bottom: 10px;
+  border: 1px solid red;
+`
 
 const Logo = styled.View`
   width: 280px;
