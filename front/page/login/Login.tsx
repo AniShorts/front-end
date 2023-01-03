@@ -1,71 +1,83 @@
 import React from 'react'
-import { Text, View, StyleSheet, Button } from 'react-native'
-import { TextInput } from 'react-native-gesture-handler';
-import { SafeAreaView } from 'react-native-safe-area-context'
+import { Text, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
 const Login = ({ navigation }: any) => {
   return (
-    <SafeAreaView style={styles.sort}>
-      <Logo />
+    <Sort>
+      <Logo 
+        source={require('../shared/TestLogo.jpg')}
+      />
       <Text>ID</Text>
-      <TextInput
-        style={styles.customInput}
+      <CustomInput
         placeholder='닉네임을 입력해주세요'
       />
       <Text>Password</Text>
-      <TextInput
-        style={styles.customInput}
+      <CustomInput
         placeholder='비밀번호를 입력해주세요'
       />
-      <View style={styles.button}>
-        <Button
-          title='로그인'
-          color={'#FFFDF9'}
-        />
-      </View>
-      <View style={styles.alignText}>
-        <Text onPress={() => navigation.navigate("FindId")}>아이디 찾기 </Text>
+      <TouchableOpacity
+        activeOpacity={0.8}
+        onPress={() => navigation.navigate("FindId")}>
+        <LoginText>로그인</LoginText>
+      </TouchableOpacity>
+      <AlignText>
+        <TouchableOpacity
+          activeOpacity={0.8}
+          onPress={() => navigation.navigate("FindId")}>
+          <Text>아이디 찾기 </Text>
+        </TouchableOpacity>
         <Text> | </Text>
-        <Text onPress={() => navigation.navigate("FindPassword")}> 비밀번호 찾기</Text>
-      </View>
-    </SafeAreaView>
+        <TouchableOpacity
+          activeOpacity={0.8}
+          onPress={() => navigation.navigate("FindPassword")}>
+          <Text> 비밀번호 찾기</Text>
+        </TouchableOpacity>
+      </AlignText>
+    </Sort>
   )
 }
 
-const styles = StyleSheet.create({
-  sort: {
-    flex: 1,
-    alignItems: "center",
-    backgroundColor: '#FFE3ED'
-  },
-  button: {
-    backgroundColor: '#9BE3DE',
-    width: 310,
-    borderRadius: 4,
-    marginTop: 20
-  },
-  customInput: {
-    padding: 10,
-    fontSize: 18,
-    backgroundColor: "#eee",
-    width: 300,
-    borderRadius: 8,
-    marginBottom: 12,
-    borderWidth: 1,
-  },
-  alignText: {
-    flexDirection: "row",
-    marginTop: 20
-  }
-});
+const Sort = styled.SafeAreaView`
+  flex: 1;
+  align-items: center;
+  background-color: white;
+`
 
-const Logo = styled.View`
+const Logo = styled.Image`
   width: 70%;
   height: 100px;
   margin-top: 10%;
   margin-bottom: 10%;
-  border: 1px solid red;
+  border: 1px solid black;
+`
+
+const CustomInput = styled.TextInput`
+  width: 84%;
+  height: 40px;
+  padding: 8px 10px;
+  margin-bottom: 24px;
+
+  border-radius: 6px;
+  border: 1px solid rgb(209, 213, 219);
+`
+const LoginText = styled.Text`
+  padding: 12px 140px;
+  margin: 8px 0px 6px 0px;
+
+  background-color: #BEEBE9;
+  border: 1px solid #9BE3DE;
+  border-radius: 8px;
+  color: white;
+  overflow: hidden;
+
+  font-weight: bold;
+  font-size: 14px;
+`
+
+const AlignText = styled.View`
+  flex-direction: row;
+  margin-top: 20px;
 `
 
 export default Login
