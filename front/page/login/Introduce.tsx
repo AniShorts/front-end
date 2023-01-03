@@ -61,6 +61,7 @@ const MoveText = styled.Text`
   overflow: hidden;
   color: #FFFDF9;
   font-weight: 800;
+  margin : 0px 10px 0px 10px;
 `
 
 
