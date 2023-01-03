@@ -6,8 +6,7 @@ const Login = ({ navigation }: any) => {
   return (
     <Sort>
       <Logo 
-        source={require('../shared/TestLogo.jpg')}
-      />
+        source={require('../shared/TestLogo.jpg')}/>
       <Text>ID</Text>
       <CustomInput
         placeholder='닉네임을 입력해주세요'

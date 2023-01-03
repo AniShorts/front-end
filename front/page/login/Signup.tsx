@@ -19,8 +19,7 @@ const Signup = ({ navigation }: any) => {
           placeholder='닉네임을 입력해주세요'
         />
         <TouchableOpacity
-          activeOpacity={0.8}
-          onPress={() => navigation.navigate("Signup")}>
+          activeOpacity={0.8}>
           <Check>중복확인</Check>
         </TouchableOpacity>
       </AlignView>
@@ -40,8 +39,7 @@ const Signup = ({ navigation }: any) => {
           placeholder='전화번호를 입력해주세요'
         />
         <TouchableOpacity
-          activeOpacity={0.8}
-          onPress={() => navigation.navigate("Signup")}>
+          activeOpacity={0.8}>
           <Check>인증하기</Check>
         </TouchableOpacity>
       </AlignView>
@@ -51,15 +49,14 @@ const Signup = ({ navigation }: any) => {
           placeholder='인증번호를 입력해주세요'
         />
         <TouchableOpacity
-          activeOpacity={0.8}
-          onPress={() => navigation.navigate("Signup")}>
+          onPress={()=> setChecked(!checked)}
+          activeOpacity={0.8}>
           <Check>인증확인</Check>
         </TouchableOpacity>
       </AlignView>
 
       <TouchableOpacity
-          activeOpacity={0.8}
-          onPress={() => navigation.navigate("Signup")}>
+          activeOpacity={0.8}>
             {
               checked ? <SignupText>회원가입</SignupText>  : <SignupText2>회원가입</SignupText2>
             }
@@ -119,7 +116,9 @@ const Check = styled.Text`
 `
 
 const SignupText = styled.Text`
-  padding: 12px 100px;
+  padding: 12px 140px;
+  margin-top: 35px;
+
   background-color: #BEEBE9;
   border: 1px solid #9BE3DE;
   border-radius: 12px;
@@ -129,7 +128,9 @@ const SignupText = styled.Text`
 `
 
 const SignupText2 = styled.Text`
-  padding: 12px 100px;
+  padding: 12px 140px;
+  margin-top: 35px;
+
   background-color: #beebe96a;
   opacity: 0.5;
   border: 1px solid #BEEBE9;
