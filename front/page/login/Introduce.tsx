@@ -1,12 +1,24 @@
-import React from 'react'
+import React, { useState, useRef} from "react";
 import {TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
-import Video from 'react-native-video'
+import { Video } from "expo-av";
 
 const Introduce = ({ navigation }: any) => {
+
+  const video = useRef(null);
+  const [status, setStatus] = useState({});
+
   return (
     <Sort>
-      <Logo />
+      <Logo>
+        <Video 
+           ref={video}
+           source={require('../shared/VideoTest.mp4')}
+           useNativeControls
+           isLooping
+           onPlaybackStatusUpdate={status => setStatus(() => status)}
+        />
+      </Logo>
       <TouchableOpacity>
         <KakaoText>카카오로 빠르게 시작하기</KakaoText>
       </TouchableOpacity>
