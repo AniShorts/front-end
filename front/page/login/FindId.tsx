@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, TouchableOpacity } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 import styled from 'styled-components/native';
 import { useState } from 'react';
 
@@ -9,33 +9,27 @@ const FindId = ({ navigation }: any) => {
 
   return (
     <Sort>
-      <Logo source={require('../shared/TestLogo.jpg')} />
-      <Text>전화번호</Text>
+      <BigText>휴대폰 번호를 입력해주세요</BigText>
+      <SortText>원활한 서비스 제공을 위해, 휴대폰 번호를 입력해주세요</SortText>
       <AlignView>
-        <CustomInput
-          placeholder='전화번호를 입력해주세요'
-        />
+        <CustomInput />
         <TouchableOpacity
           onPress={() => setChecked(!checked)}
           activeOpacity={0.8}>
           <Check>인증하기</Check>
         </TouchableOpacity>
       </AlignView>
+
       {
-        checked ? <><AlignView>
-          <CustomInput
-            placeholder='인증번호를 입력해주세요'
-          />
-          <TouchableOpacity
-            activeOpacity={0.8}>
-            <Check>인증확인</Check>
-          </TouchableOpacity>
-        </AlignView>
-          <TouchableOpacity
-            onPress={() => navigation.navigate("")}
-            activeOpacity={0.8}>
-            <Next>다음</Next>
-          </TouchableOpacity>
+        checked ? <>
+          <Certification>인증번호</Certification>
+          <AlignView>
+            <CustomInput />
+            <TouchableOpacity
+              activeOpacity={0.8}>
+              <Check>이동하기</Check>
+            </TouchableOpacity>
+          </AlignView>
         </> : null
       }
     </Sort>
@@ -44,53 +38,48 @@ const FindId = ({ navigation }: any) => {
 
 const Sort = styled.SafeAreaView`
   flex: 1;
-  align-items: center;
   background-color: white;
 `
-const Logo = styled.Image`
-  width: 70%;
-  height: 100px;
-  margin-top: 10%;
-  margin-bottom: 10%;
-  border: 1px solid black;
-`
-const AlignView = styled.View`
-  flex-direction: row;
-`
-const CustomInput = styled.TextInput`
-  width: 50%;
-  height: 40px;
-  padding: 8px 10px;
-  margin-bottom: 24px;
-  margin-right: 20px;
 
-  border-radius: 6px;
-  border: 1px solid rgb(209, 213, 219);
+const BigText = styled.Text`
+  font-size: 20px;
+  font-weight: bold;
+  margin: 35% 0px 8px 28px;
+`
+
+const SortText = styled.Text`
+  color: gray;
+  margin-left: 28px;
+`
+
+const CustomInput = styled.TextInput`
+  width: 90%;
+  height: 40px;
+  padding: 0px 8px;
+  margin-bottom: 24px;
+
+  border-bottom-width: 1px;
+  border-color: rgb(209, 213, 219);
+`
+
+const AlignView = styled.View`
+  align-items: center;
+`
+
+const Certification = styled.Text`
+  color: gray;
+  margin: 10% 0px 0px 28px;
 `
 
 const Check = styled.Text`
-  padding: 12px;
+  padding: 10px 38%;
   background-color: #BEEBE9;
   border: 1px solid #9BE3DE;
-  border-radius: 12px;
+  border-radius: 4px;
 
   overflow: hidden;
   color: #FFFDF9;
   font-weight: 800;
-`
-
-const Next = styled.Text`
-  padding: 12px 140px;
-  margin: 8px 0px 6px 0px;
-
-  background-color: #BEEBE9;
-  border: 1px solid #9BE3DE;
-  border-radius: 8px;
-  color: white;
-  overflow: hidden;
-
-  font-weight: bold;
-  font-size: 14px;
 `
 
 export default FindId
