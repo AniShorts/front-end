@@ -1,7 +1,9 @@
 import React, { useState, useRef} from "react";
-import {TouchableOpacity } from 'react-native'
+import {TouchableOpacity, Text } from 'react-native'
 import styled from 'styled-components/native'
 import { Video } from "expo-av";
+import { Feather } from '@expo/vector-icons';
+
 
 const Introduce = ({ navigation }: any) => {
 
@@ -19,8 +21,9 @@ const Introduce = ({ navigation }: any) => {
            onPlaybackStatusUpdate={status => setStatus(() => status)}
         />
       </Logo>
-      <TouchableOpacity>
+      <TouchableOpacity style={{position:"relative"}}>
         <KakaoText>카카오로 빠르게 시작하기</KakaoText>
+        <Feather name="message-circle" size={24} color="black" style={{position:"absolute", top:9, left:12}}/>
       </TouchableOpacity>
       <ButtonView>
         <TouchableOpacity
