@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { View, StyleSheet, Button, TouchableOpacity, Text } from 'react-native';
+import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import { Video, AVPlaybackStatus } from 'expo-av';
 import styled from 'styled-components/native'
 import { Feather } from '@expo/vector-icons';
@@ -18,7 +18,6 @@ const Introduce = ({ navigation }: any) => {
             uri: 'https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4',
           }}
           useNativeControls
-          resizeMode="contain"
           isLooping
           onPlaybackStatusUpdate={status => setStatus(() => status)}
         />
@@ -46,22 +45,12 @@ const Introduce = ({ navigation }: any) => {
 export default Introduce
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    backgroundColor: '#ecf0f1',
-  },
   video: {
     alignSelf: 'center',
     width: 300,
     height: 550,
     marginBottom: 30
-  },
-  buttons: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+  }
 });
 
 const Sort = styled.SafeAreaView`
