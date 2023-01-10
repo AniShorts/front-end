@@ -1,5 +1,8 @@
+import React from 'react'
 import { NavigationContainer } from '@react-navigation/native';
 import Router from './page/shared/Router';
+
+
 
 const App = () => {
   return (
@@ -10,3 +13,4 @@ const App = () => {
 }
 
 export default App
+
