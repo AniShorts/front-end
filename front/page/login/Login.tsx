@@ -1,46 +1,86 @@
-import React from 'react'
+import React, { useState } from "react";
 import { Text, TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
+import UserData from "./interface";
+
 
 const Login = ({ navigation }: any) => {
+
+  const [user, setUser] = useState<UserData>({
+    nickname: "",
+    password: ""
+  })
+
+  const { nickname, password } = user;
+
+  const onChange = (keyvalue: string, e: any) => {
+    const { text } = e.nativeEvent
+    setUser({
+      ...user,
+      [keyvalue]: text
+    });
+  };
+
+  console.log(user);
+
+
   return (
     <Sort>
-      <Logo 
-        source={require('../shared/TestLogo.jpg')}/>
-      <Text>ID</Text>
-      <CustomInput
-        placeholder='닉네임을 입력해주세요'
-      />
-      <Text>Password</Text>
-      <CustomInput
-        placeholder='비밀번호를 입력해주세요'
-      />
-      <TouchableOpacity
-        activeOpacity={0.8}
-        onPress={() => navigation.navigate("FindId")}>
-        <LoginText>로그인</LoginText>
-      </TouchableOpacity>
-      <AlignText>
+      <AlignView>
+        <Logo source={require('../shared/TestLogo.jpg')} />
+      </AlignView>
+
+      <SortText>아이디</SortText>
+      <AlignView>
+        <CustomInput
+          onChange={(e) => onChange("nickname", e)}
+          value={nickname}
+          placeholder='닉네임을 입력해주세요'
+        />
+      </AlignView>
+
+      <SortText>비밀번호</SortText>
+      <AlignView>
+        <CustomInput
+          onChange={(e) => onChange("password", e)}
+          value={password}
+          placeholder='비밀번호를 입력해주세요'
+        />
         <TouchableOpacity
           activeOpacity={0.8}
           onPress={() => navigation.navigate("FindId")}>
-          <Text>아이디 찾기 </Text>
+          <LoginText>로그인</LoginText>
         </TouchableOpacity>
-        <Text> | </Text>
-        <TouchableOpacity
-          activeOpacity={0.8}
-          onPress={() => navigation.navigate("FindPassword")}>
-          <Text> 비밀번호 찾기</Text>
-        </TouchableOpacity>
-      </AlignText>
+        <AlignText>
+          <TouchableOpacity
+            activeOpacity={0.8}
+            onPress={() => navigation.navigate("FindId")}>
+            <Text>아이디 찾기 </Text>
+          </TouchableOpacity>
+          <Text> | </Text>
+          <TouchableOpacity
+            activeOpacity={0.8}
+            onPress={() => navigation.navigate("FindPassword")}>
+            <Text> 비밀번호 찾기</Text>
+          </TouchableOpacity>
+        </AlignText>
+      </AlignView>
     </Sort>
   )
 }
 
 const Sort = styled.SafeAreaView`
   flex: 1;
-  align-items: center;
   background-color: white;
+`
+
+const AlignView = styled.View`
+  align-items: center;
+`
+
+const AlignText = styled.Text`
+  flex-direction: row;
+  margin-top: 20px;
 `
 
 const Logo = styled.Image`
@@ -49,6 +89,11 @@ const Logo = styled.Image`
   margin-top: 10%;
   margin-bottom: 10%;
   border: 1px solid black;
+`
+
+const SortText = styled.Text`
+  margin: 0px 0px 8px 32px;
+  font-weight: 600;
 `
 
 const CustomInput = styled.TextInput`
@@ -72,11 +117,6 @@ const LoginText = styled.Text`
 
   font-weight: bold;
   font-size: 14px;
-`
-
-const AlignText = styled.View`
-  flex-direction: row;
-  margin-top: 20px;
 `
 
 export default Login
